@@ -33,27 +33,28 @@ def start_game():
     # write your code inside this function.
 
     print("\t\tWELCOME PLAYER!")
-    random_number = random.randint(0, 11)
+    random_number = random.randint(0, 10)
     tries = 0
-    print(random_number)
-    player_input = int(input("Enter a number between 0 & 10 >>> "))
+    try:
+        player_input = int(input("Enter a number between 0 & 10 >>> "))
+        while status:
 
-    while status:
+            if player_input == random_number:
+                print("Got it\n")
+                print("Thanks for playing! ")
+                print("It took {} tries".format(tries))
 
+                status = False
+            elif player_input < random_number:
+                player_input = int(input("It's higher >>> "))
+                tries += 1
 
-
-        if player_input == random_number:
-            print("Got it")
-            print(f"It took {tries} tries".format(tries))
-
-            status = False
-        elif player_input < random_number:
-            player_input = int(input("It's higher >>> "))
-            tries += 1
-
-        elif player_input > random_number:
-            player_input = int(input("It's lower >>> "))
-            tries += 1
+            elif player_input > random_number:
+                player_input = int(input("It's lower >>> "))
+                tries += 1
+    except ValueError:
+        print("try again")
+        start_game()
 
 
 
